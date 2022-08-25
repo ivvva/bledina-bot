@@ -29,12 +29,14 @@ bot.onText(/\/start/, (msg) => {
   });
 });
 
+
 bot.on('message', async (msg) => {
   let chat_id = msg.from.id
   const statsLatest = await getStatisticsLatest()
   const display = displayStats(statsLatest)
+
   if (msg.text == 'дізнатись про втрати русні') {
-    bot.sendMessage(chat_id, display)
+    bot.sendMessage(chat_id, display, {parse_mode : "HTML"})
   }
 })
 
